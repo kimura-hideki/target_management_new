@@ -46,7 +46,13 @@ class User(UserMixin, db.Model):
         if not self.user_name:
             self.errors['user_name'] = 'ユーザ名は必須入力です。'
             validate = False
-            
+        if not self.email:
+            self.errors['email'] = 'Eメールは必須入力です。'
+            validate = False
+        if not self.authority:
+            self.errors['authority'] = '権限は必須入力です。'
+            validate = False
+
         return validate
     
     @classmethod

@@ -18,10 +18,10 @@ const Users = () => {
     
     const url = "/api/users";
     const searchJSON = `{"params": ${JSON.stringify(data)}}`
-    
     await axios.get(url, JSON.parse(searchJSON))
     .then(
       (response) => {
+        console.log(response);
         setUsersResult(response.data.users);
       }
     ).catch(

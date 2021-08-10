@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import Menu from "./pages/menu";
 import Users from "./pages/users";
 import UserForm from "./pages/users/UserForm";
+import UserAddForm from "./pages/users/UserAddForm";
 import Items from "./pages/items";
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
         <Route exact path="/menu" component={Menu} />
         <Route exact path="/users" component={Users} />
         <Route exact path="/users/new" >
-          <UserForm pageMode="new" />
+          <UserAddForm pageMode="new" />
         </Route>        
         <Route exact path="/users/:id" >
           <UserForm pageMode="show" />

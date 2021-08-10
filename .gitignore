@@ -22,3 +22,6 @@ app/templates/dist/*
 # Ignore Other files
 .DS_Store
 .vscode
+
+.venv
+.python-version
