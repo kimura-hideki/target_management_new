@@ -1,7 +1,8 @@
 from sqlalchemy.sql.expression import false, true
+from sqlalchemy.sql.functions import count
 from db import db, ma
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, BigInteger, String, Enum
+from sqlalchemy import Column, BigInteger, String, Enum, select
 from marshmallow import fields
 from flask_login import UserMixin
 import enum
@@ -52,6 +53,12 @@ class User(UserMixin, db.Model):
         if not self.authority:
             self.errors['authority'] = '権限は必須入力です。'
             validate = False
+
+        if validate == True:
+            users = db.session.query(User).where(User.login_id == self.login_id).count()
+            if not users == 0:
+                self.errors['login_id'] = 'そのログインIDはすでに登録されています。'
+                validate = False
 
         return validate
     
