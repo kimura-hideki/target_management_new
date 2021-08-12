@@ -83,10 +83,7 @@ const UserAddForm = (props) => {
     .then(
       () => {
         // エラーをリフレッシュ
-        // const user = data;
-				// console.log("user");
-				// console.log(user);
-        // dispatch ({type: 'CONFIRM', payload: user})
+        dispatch ({type: 'CONFIRM', payload: {}})
         setPageMode("confirm");
       }
     ).catch(
