@@ -128,6 +128,17 @@ const UserAddForm = (props) => {
     );
   }
 
+  // 確認→入力画面へ戻る
+  const returnForrm = async (data) => {
+    if( pageMode === "new" ){
+      history.push(`/users`);
+    }else{
+      const user = data;
+      dispatch ({type: 'NEW_USER', payload: user})
+      setPageMode("new");
+    }
+  }
+
   const authoritySelect = (
     <FormControl
       error={getErrorCondition(state.errors, "authority")}
@@ -149,9 +160,9 @@ const UserAddForm = (props) => {
       />
       <FormHelperText>{getErroMessage(state.errors, "authority")}</FormHelperText>
     </FormControl>
-);
+  );
 
-    const authorityText = (
+  const authorityText = (
     <TextControl
       control={control}
       name="authority"
@@ -228,6 +239,7 @@ const UserAddForm = (props) => {
           type="button"
           variant="contained"
           style={{marginRight:10}}
+          onClick={returnForrm}
         >
           {"戻る"}
         </Button>
