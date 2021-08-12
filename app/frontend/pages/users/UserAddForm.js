@@ -83,10 +83,10 @@ const UserAddForm = (props) => {
     .then(
       () => {
         // エラーをリフレッシュ
-        const user = data;
-				console.log("user");
-				console.log(user);
-        dispatch ({type: 'CONFIRM', payload: user})
+        // const user = data;
+				// console.log("user");
+				// console.log(user);
+        // dispatch ({type: 'CONFIRM', payload: user})
         setPageMode("confirm");
       }
     ).catch(
@@ -128,7 +128,7 @@ const UserAddForm = (props) => {
     );
   }
 
-  // 確認→入力画面へ戻る
+  // 確認→入力画面→検索へ戻る
   const returnForrm = async (data) => {
     if( pageMode === "new" ){
       history.push(`/users`);
@@ -143,6 +143,7 @@ const UserAddForm = (props) => {
     <FormControl
       error={getErrorCondition(state.errors, "authority")}
       style={{minWidth:150}}
+      disabled={readOnly}
     >        
       <InputLabel id="demo-simple-select-label">権限</InputLabel>
       <Controller
@@ -150,8 +151,8 @@ const UserAddForm = (props) => {
           // eslint-disable-next-line react/display-name
           ({ field }) => <Select {...field}>
             <MenuItem value={""}>　</MenuItem>
-            <MenuItem value={"administrator"}>管理者</MenuItem>
-            <MenuItem value={"member"}>メンバー</MenuItem>
+            <MenuItem value={"administrator"} selected={state.authority === "administrator" ? "selected" : ""}>管理者</MenuItem>
+            <MenuItem value={"member"} selected={state.authority === "administrator" ? "selected" : ""}>メンバー</MenuItem>
           </Select>
         }
         control={control}
@@ -162,29 +163,17 @@ const UserAddForm = (props) => {
     </FormControl>
   );
 
-  const authorityText = (
-    <TextControl
-      control={control}
-      name="authority"
-      label="権限"
-      value={state.authority === "administrator" ? "管理者" : "メンバー"}
-      readOnly={true}
-      error={getErrorCondition(state.errors, "authority")}
-      helperText={state.authority === "administrator" ? "管理者" : "メンバー"}
-    />
-  );
 
 
   return (
     <main>
       <h1>ユーザ</h1>
-      <br/>
       <LogoutButton />
       <br/>
+      <div><br/><label>{pageMode === "confirm" ? "内容を確認し登録ボタンを押してください。" : "登録するユーザー情報を入力し確認ボタンを押してください。"}</label></div>
       <form onSubmit={handleSubmit(
         pageMode === "confirm" ? doPost : doConfirm
       )}>
-        <br/>
         <br/>
         <TextControl
           control={control}
@@ -231,7 +220,7 @@ const UserAddForm = (props) => {
         />
         <br/>
         <div style={{marginTop:10}}>
-        {pageMode === "confirm" ? authorityText : authoritySelect}
+        {authoritySelect}
         </div>
         <br/>
         <div style={{marginTop:10}}>
