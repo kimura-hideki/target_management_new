@@ -141,7 +141,7 @@ const UserAddForm = (props) => {
       error={getErrorCondition(state.errors, "authority")}
       style={{minWidth:150}}
       disabled={readOnly}
-    >        
+    >
       <InputLabel id="demo-simple-select-label">権限</InputLabel>
       <Controller
         render={

@@ -10,6 +10,7 @@ import Users from "./pages/users";
 import UserForm from "./pages/users/UserForm";
 import UserAddForm from "./pages/users/UserAddForm";
 import Items from "./pages/items";
+import Cars from "./pages/cars";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <UserForm pageMode="edit" />
         </Route>
         <Route exact path="/items" component={Items} />
+        <Route exact path="/cars" component={Cars} />
       </Switch>
     </BrowserRouter>
   );

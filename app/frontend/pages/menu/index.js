@@ -44,6 +44,8 @@ const Menu = () => {
         <></>
       }
       <br/>
+      <Link to="/cars">車両検索</Link>
+      <br/>
       <br/>
       <LogoutButton />
     </main>
