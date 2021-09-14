@@ -142,7 +142,7 @@ const Cars = () => {
             type="button"
             variant="contained" 
             color="secondary"
-            onClick={() => { history.push("/users/new") }}
+            onClick={() => { history.push("/cars/new") }}
           >
             新規作成
           </Button>

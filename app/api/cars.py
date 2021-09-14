@@ -57,18 +57,18 @@ def get_user(id):
     user_schema = UserSchema()
     return jsonify({'user': user_schema.dump(user)}), 200
 
-@cars_bp.route("/api/users/new/valid", methods=["post"])
+@cars_bp.route("/api/cars/new/valid", methods=["post"])
 @login_required
 def do_create_confirm():
     """
-        ユーザ情報検証
+        車種情報検証
     """
     params = request.get_json()
 
-    users = User()
-    users.set_update_attribute(params)
-    if not users.valid():
-        return jsonify(users.errors), 400
+    cars = Car()
+    cars.set_update_attribute(params)
+    if not cars.valid():
+        return jsonify(cars.errors), 400
 
     return jsonify({}), 200
 
@@ -76,7 +76,7 @@ def do_create_confirm():
 @login_required
 def do_create_post():
     """
-        ユーザ登録
+        車種情報登録
     """
     params = request.get_json()
 

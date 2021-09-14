@@ -1,7 +1,7 @@
 import React from "react"
 import { Controller } from "react-hook-form";
 import { any, bool, string } from "prop-types";
-import { Select, MenuItem, InputLabel, FormControl } from "@material-ui/core";
+import { Select, MenuItem, InputLabel, FormControl, FormHelperText } from "@material-ui/core";
 
 const MakerSelectControl = (props) => {
   const name = props.name;
@@ -20,6 +20,7 @@ const MakerSelectControl = (props) => {
   */
   return (
     <FormControl
+    error={error}
     style={{minWidth:150}}
     disabled={readOnly}
     >
@@ -30,6 +31,7 @@ const MakerSelectControl = (props) => {
       style={{minWidth:200}}
       disabled={readOnly}
       defaultValue={value}
+      helperText={helperText}
       render={
         function render ({ field:{ value, ref, onChange} }) {
           return (
@@ -39,13 +41,9 @@ const MakerSelectControl = (props) => {
               onChange={onChange}
               inputRef={ref}
               defaultValue={value}
-              InputProps={{
-                readOnly: readOnly,
-              }}
               type={type}
               helperText={helperText}
-              error={error}
-            >
+              >
               <MenuItem value={""}>　</MenuItem>
               <MenuItem value={"トヨタ"}>トヨタ</MenuItem>
               <MenuItem value={"ニッサン"}>日産</MenuItem>
@@ -60,6 +58,7 @@ const MakerSelectControl = (props) => {
         }
       }
     />
+    <FormHelperText>{helperText}</FormHelperText>
     </FormControl>
   );
 }

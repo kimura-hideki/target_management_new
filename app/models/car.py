@@ -31,32 +31,27 @@ class Car(db.Model):
         # エラーメッセージのインスタンス変数を作成
         self.errors = {'fatal': False}
         # ユーザ画面からくる値をインスタンスに設定
-        for key in list(params["user"].keys()):
-            setattr(self, key, params["user"][key])
+        for key in list(params["car"].keys()):
+            setattr(self, key, params["car"][key])
     
     # 入力チェック
     def valid(self):
         validate = True
         # 一旦ストレートに書きます。
-        if not self.login_id:
-            self.errors['login_id'] = 'ログインIDは必須入力です。'
+        if not self.maker:
+            self.errors['maker'] = 'メーカーは必須入力です。'
             validate = False
-        if validate == True:
-            users = db.session.query(User).where(User.login_id == self.login_id).count()
-            if not users == 0:
-                self.errors['login_id'] = 'そのログインIDはすでに登録されています。'
-                validate = False
-        if not self.password:
-            self.errors['password'] = 'パスワードは必須入力です。'
+        if not self.model:
+            self.errors['model'] = '車種は必須入力です。'
             validate = False
-        if not self.user_name:
-            self.errors['user_name'] = 'ユーザ名は必須入力です。'
+        if not self.grade:
+            self.errors['grade'] = 'グレードは必須入力です。'
             validate = False
-        if not self.email:
-            self.errors['email'] = 'Eメールは必須入力です。'
+        if not self.bodyColor:
+            self.errors['bodyColor'] = 'ボディカラーは必須入力です。'
             validate = False
-        if not self.authority:
-            self.errors['authority'] = '権限は必須入力です。'
+        if not self.price:
+            self.errors['price'] = '金額は必須入力です。'
             validate = False
 
         return validate
