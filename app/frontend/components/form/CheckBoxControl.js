@@ -9,6 +9,8 @@ const CheckBoxControl = (props) => {
   const control = props.control;
   const label = props.label;
   const value = props.value;
+  const defaultValue = props.defaultValue;
+  const readOnly = props.readOnly;
 
 
   /*
@@ -20,7 +22,8 @@ const CheckBoxControl = (props) => {
         <Controller
             control={control}
             name={name}
-            defaultValue={value}
+            defaultValue={defaultValue}
+            value={value}
             render={function render ({ field:{ value, onChange} }) {
                 return (
                 <FormControlLabel
@@ -28,6 +31,7 @@ const CheckBoxControl = (props) => {
                         <Checkbox
                             checked={value}
                             name={name}
+                            disabled={readOnly}
                             onChange={onChange}
                             value="1"
                             />
@@ -45,6 +49,7 @@ CheckBoxControl.propTypes = {
   control: any,
   label: string,
   value: any,
+  defaultValue: any,
   readOnly: bool,
   type: string,
   error: bool,

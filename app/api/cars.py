@@ -72,7 +72,7 @@ def do_create_confirm():
 
     return jsonify({}), 200
 
-@cars_bp.route("/api/users/create", methods=["post"])
+@cars_bp.route("/api/cars/create", methods=["post"])
 @login_required
 def do_create_post():
     """
@@ -80,13 +80,13 @@ def do_create_post():
     """
     params = request.get_json()
 
-    users = User()
-    users.set_update_attribute(params)
+    car = Car()
+    car.set_update_attribute(params)
 
-    if not users.valid():
+    if not car.valid():
         return jsonify(params), 400
 
-    db.session.add(users)
+    db.session.add(car)
     db.session.commit()
 
     return jsonify({}), 200

@@ -69,7 +69,20 @@ const reducer = (state, action) => {
         sr: action.payload.sr,
         errors: action.payload,
       };
-    case "ERROR_CLEAR":
+      case "COMPLETE":
+        return {...state,
+          carId: "",
+          maker: "",
+          model: "",
+          grade: "",
+          bodyColor: "",
+          price: "",
+          navi: "",
+          kawa: "",
+          sr: "",
+          errors: {},
+        };
+      case "ERROR_CLEAR":
       return {...state,
         errors: {},
       };
@@ -120,6 +133,7 @@ const CarAddForm = (props) => {
 
   // 登録
   const doPost = async (data) => {
+    console.log(data);
     const url = `/api/cars/create`;
     const carJSON = `{"car": ${JSON.stringify(data)}, "mode": "create"}`
 
@@ -129,8 +143,8 @@ const CarAddForm = (props) => {
         // 更新できたら詳細画面に飛ばす
         // history.push(`/users/${id}`);
         // setPageMode("show");
-        alert("車種情報登録が完了しました。検索画面へ戻ります。");
-        history.push(`/cars`);
+        // alert("車種情報登録が完了しました。検索画面へ戻ります。");
+        history.push(`/cars/new/complete`);
       }
       
     ).catch(
@@ -187,7 +201,6 @@ const CarAddForm = (props) => {
           label="グレード"
           value={state.grade}
           readOnly={readOnly}
-          type="grade"
           error={getErrorCondition(state.errors, "grade")}
           helperText={getErroMessage(state.errors, "grade")}
         />
@@ -219,8 +232,8 @@ const CarAddForm = (props) => {
             control={control}
             name="navi"
             label="ナビ"
-            value={state.navi}
             readOnly={readOnly}
+            defaultValue={state.navi == "1"}
             error={getErrorCondition(state.errors, "navi")}
             helperText={getErroMessage(state.errors, "navi")}
             />
@@ -230,8 +243,8 @@ const CarAddForm = (props) => {
             control={control}
             name="kawa"
             label="革シート"
-            value={state.kawa}
             readOnly={readOnly}
+            defaultValue={state.kawa == "1"}
             error={getErrorCondition(state.errors, "kawa")}
             helperText={getErroMessage(state.errors, "kawa")}
           />
@@ -241,8 +254,8 @@ const CarAddForm = (props) => {
             control={control}
             name="sr"
             label="サンルーフ"
-            value={state.sr}
             readOnly={readOnly}
+            defaultValue={state.sr == "1"}
             error={getErrorCondition(state.errors, "sr")}
             helperText={getErroMessage(state.errors, "sr")}
           />

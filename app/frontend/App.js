@@ -12,6 +12,7 @@ import UserAddForm from "./pages/users/UserAddForm";
 import Items from "./pages/items";
 import Cars from "./pages/cars";
 import CarAddForm from "./pages/cars/CarAddForm";
+import CarComplete from "./pages/cars/CarComplete";
 
 const App = () => {
   return (
@@ -34,6 +35,9 @@ const App = () => {
         <Route exact path="/cars" component={Cars} />
         <Route exact path="/cars/new" >
           <CarAddForm pageMode="new" />
+        </Route>        
+        <Route exact path="/cars/new/complete" >
+          <CarComplete status="create" />
         </Route>        
       </Switch>
     </BrowserRouter>

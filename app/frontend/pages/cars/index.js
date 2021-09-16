@@ -113,18 +113,21 @@ const Cars = () => {
             name="navi"
             label="ナビ"
             value=""
+            defaultValue={false}
           />
         <CheckBoxControl
             control={control}
             name="kawa"
             label="革シート"
             value=""
+            defaultValue={false}
           />
         <CheckBoxControl
             control={control}
             name="sr"
             label="サンルーフ"
             value=""
+            defaultValue={false}
           />
 
         <br/>

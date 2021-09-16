@@ -64,9 +64,9 @@ const CarsList = (props) => {
                 <label className={classes.listContents}>{car.grade}</label><br/>
                 <label className={classes.listContents}>{car.bodyColor}</label><br/>
                 <label className={classes.listContents}>{car.price}</label><br/>
-                <label className={classes.listContentsSub}>{car.navi === null ? " " : "ナビ有 "}</label>
-                <label className={classes.listContentsSub}>{car.kawa === null ? " " : "革シート "}</label>
-                <label className={classes.listContentsSub}>{car.sr === null ? " " : "サンルーフ付"}</label>
+                <label className={classes.listContentsSub}>{car.navi === "0" ? " " : "ナビ有 "}</label>
+                <label className={classes.listContentsSub}>{car.kawa === "0" ? " " : "革シート "}</label>
+                <label className={classes.listContentsSub}>{car.sr === "0" ? " " : "サンルーフ付"}</label>
             </CardContent>
             ))
             }
