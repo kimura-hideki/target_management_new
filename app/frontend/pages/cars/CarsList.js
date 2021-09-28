@@ -28,7 +28,9 @@ const useStyles = makeStyles({
         width: "15%",
         minHeight: "220px",
         float: "left",
-        marginRight: "20px",
+        marginRight: "10px",
+        marginLeft: "10px",
+        marginBottom: "10px",
         "&:last-child": {
             paddingBottom: 16,
          },

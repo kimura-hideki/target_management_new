@@ -8,6 +8,14 @@ import { useHistory } from "react-router";
 import MakerSeleCtcontrol from "../../components/form/MakerSeleCtcontrol";
 import TextControl from "../../components/form/TextControl";
 import CheckBoxControl from "../../components/form/CheckBoxControl";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  marginLeft: {
+    margin: "10px"
+  },
+
+});
 
 const Cars = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -15,6 +23,7 @@ const Cars = () => {
   const [carsResult, setCarsResult] = useState([]);
   const [searchResult, setSearchResult] = useState('検索してください。');
   const history = useHistory();
+  const classes = useStyles();
 
   // React側でもログイン状態かチェック
   // 管理者は別メニューが出るようにする
@@ -73,28 +82,30 @@ const Cars = () => {
             name="maker"
             label="メーカー"
             value=""
+            className={classes.marginLeft}
         />
-        <br/>
         <TextControl
             control={control}
             name="model"
             label="車種"
             value=""
+            className={classes.marginLeft}
           />
-        <br/>
         <TextControl
             control={control}
             name="grade"
             label="グレード"
             value=""
+            className={classes.marginLeft}
           />
-        <br/>
         <TextControl
             control={control}
             name="bodyColor"
             label="ボディカラー"
             value=""
+            className={classes.marginLeft}
           />
+          <br/>
         <TextControl
             control={control}
             name="price_min"

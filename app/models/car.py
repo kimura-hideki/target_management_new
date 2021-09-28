@@ -53,6 +53,13 @@ class Car(db.Model):
         if not self.price:
             self.errors['price'] = '金額は必須入力です。'
             validate = False
+        if not self.price:
+            self.errors['price'] = '金額は必須入力です。'
+            validate = False
+        else:
+            if not self.price.isnumeric():
+                self.errors['price'] = '金額は0以上の数字で入力してください。'
+                validate = False
 
         return validate
     
