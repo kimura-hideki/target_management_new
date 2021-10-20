@@ -83,7 +83,7 @@ npm run dev
 ```webpack.config.js, package.json```を参照したり、Flask側/app配下のソースを参照すると  
 わかるかもしれません、見て調べるのものありです。
 
-## 現在のディレクトリ・ファイル構成
+## 現在のディレクトリ・ファイル構成(2021/10/20時点)
 
 ```shell
 .
@@ -92,12 +92,29 @@ npm run dev
 ├── README.md
 ├── app
 │   ├── __init__.py
+│   ├── api
+│   │   ├── cars.py
+│   │   ├── items.py
+│   │   ├── login.py
+│   │   ├── menu.py
+│   │   ├── users.py
 │   ├── frontend
 │   │   ├── App.js
 │   │   ├── components
+│   │   │   ├── form
+│   │   │   │   └── CheckBoxControl.js
+│   │   │   │   └── MakerSeleCtcontrol.js
+│   │   │   │   └── TextCtcontrol.js
 │   │   │   ├── Item.tsx
 │   │   │   └── ItemList.js
+│   │   │   └── LogoutButton.js
 │   │   └── pages
+│   │       ├── cars
+│   │       │   └── CarAddForm.js
+│   │       │   └── CarComplete.js
+│   │       │   └── CarForm.js
+│   │       │   └── CarsList.js
+│   │       │   └── index.js
 │   │       ├── items
 │   │       │   └── index.js
 │   │       ├── login
@@ -105,9 +122,17 @@ npm run dev
 │   │       │   └── index.js
 │   │       └── menu
 │   │           └── index.js
+│   │       └── users
+│   │           └── index.js
+│   │           └── UserAddForm.js
+│   │           └── UserForm.js
+│   │           └── UserRegisterButtonControl.js
+│   │           └── UsersList.js
 │   ├── models
 │   │   ├── __init__.py
+│   │   ├── car.py
 │   │   ├── item.py
+│   │   ├── login.py
 │   │   └── user.py
 │   ├── static
 │   ├── templates
@@ -119,6 +144,7 @@ npm run dev
 │       ├── login.py
 │       └── memu.py
 ├── db
+│   ├── cars.sql
 │   ├── items.sql
 │   └── users.sql
 ├── db.py
@@ -148,3 +174,13 @@ ESLint ルール 一覧 (日本語)
 
 多少縛りがきついほうが、きれいにかけるかもよ。
 ルールは後見直してみます。  
+
+
+## 作ってみて
+
+部品化したパーツにエラー内容等を連携するのに若干悩みましたが、それ以外は特段手を止めることなく作業を進めることができました。
+
+また、makeStylesを利用して車両情報の検索結果に軽くレイアウトも当ててます。
+
+その他、ログインユーザーの権限を参照して新規登録ができる・できないを分けています。
+
